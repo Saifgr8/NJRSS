@@ -1,3 +1,6 @@
+import React from "react";
+import  ReactDOM from "react-dom";
+
 const header = React.createElement(
   "h1",
   {
@@ -5,8 +8,8 @@ const header = React.createElement(
   },
   "Hello World"
 );
+//const root = ReactDOM.createRoot(document.getElementById("root"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
+//const footer = React.createElement("h1", {}, "Down we are");
 
-const footer = React.createElement("h1", {}, "Down we are");
-
-root.render(footer);
+root.render(header);
