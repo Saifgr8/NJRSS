@@ -1,0 +1,14 @@
+{
+  "name": "njrss",
+  "version": "1.0.0",
+  "description": "Learning",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saif",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
