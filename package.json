@@ -2,13 +2,15 @@
   "name": "njrss",
   "version": "1.0.0",
   "description": "Learning",
-  "main": "App.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Saif",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.22.17",
     "parcel": "^2.9.3",
     "process": "^0.11.10"
   },
