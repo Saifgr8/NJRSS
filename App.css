@@ -1,6 +1,32 @@
-#root{
-    background-color: aqua;
+
+.Navbar{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
 }
-#front{
-    background-color: red;
+.Navbar > ul {
+    display: flex;
+    list-style: none;
+}
+.Navbar > ul > li {
+    padding: 20px;
+}
+.Logo{
+    height: 100px;
+    padding-top: 10px;
+}
+.RestaurantCards{
+    padding: 10px 10px 10px 10px;
+    width: 150px;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+.RestImg{ 
+    width: 150px;
+}
+.BodySite{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 10px 10px 10px;
 }
