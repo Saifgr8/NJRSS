@@ -15,7 +15,7 @@ const Body = () => {
       <div>
         <input
           type="text"
-          prefix="search"
+          prefix=""
           value={searchText}
           onChange={(e) => {
             setsearchText(e.target.value);
