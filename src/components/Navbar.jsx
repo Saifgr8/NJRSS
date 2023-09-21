@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import logo from "../images/saifnew-modified.png";
+import { Link } from "react-router-dom";
 
 const Title = () => {
   return (
     <div>
-      <a href="./">
+      <a href="http://localhost:1234/">
         <img
           className="Logo"
           alt="no img"
@@ -15,15 +17,32 @@ const Title = () => {
 };
 
 const Navbar = () => {
+  const [LoggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="Navbar">
       <Title />
       <ul>
-        <li>About us</li>
-        <li>Contact us</li>
-        <li>Home</li>
-        <li>Cart</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>{" "}
+        <li>
+          <Link to="/about">About us</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>{" "}
+        <li>
+          <Link to="/">Cart</Link>
+        </li>
       </ul>
+      <div>
+        {LoggedIn ? (
+          <button onClick={() => setLoggedIn(false)}>Login</button>
+        ) : (
+          <button onClick={() => setLoggedIn(true)}>Logout</button>
+        )}
+      </div>
     </div>
   );
 };

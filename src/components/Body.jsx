@@ -1,16 +1,34 @@
 import { RestaurantList } from "../config";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
 
 const filterData = (clickedRestaurant, searchText) => {
   return clickedRestaurant.filter((restaurant) =>
-    restaurant.title.toLowerCase().includes(searchText)
+    restaurant?.title?.toLowerCase().includes(searchText?.toLowerCase())
   );
 };
 
 const Body = () => {
-  const [searchText, setsearchText] = useState();
-  const [clickedRestaurant, setclickedRestaurant] = useState(RestaurantList);
-  return (
+  const [searchText, setsearchText] = useState("");
+  const [clickedRestaurant, setclickedRestaurant] = useState([]);
+  const [LoadingPage, setLoadingPage] = useState([]);
+
+  useEffect(() => {
+    getRestData();
+  }, [searchText]);
+
+  async function getRestData() {
+    const data = RestaurantList;
+    setLoadingPage(data);
+    setclickedRestaurant(data);
+  }
+
+  if (!LoadingPage) return null;
+
+  return LoadingPage.length === 0 ? (
+    <Shimmer />
+  ) : (
     <>
       <div>
         <input
@@ -23,7 +41,7 @@ const Body = () => {
         ></input>
         <button
           onClick={() => {
-            setclickedRestaurant(filterData(clickedRestaurant, searchText));
+            setclickedRestaurant(filterData(LoadingPage, searchText));
           }}
         >
           Search
@@ -31,14 +49,18 @@ const Body = () => {
       </div>
       <div className="BodySite">
         {clickedRestaurant.map((data, index) => {
-          return <RestaurantCards {...data} key={index} />;
+          return (
+            <Link key={index} to={"restaurant/" + data.id}>
+              <RestaurantCards {...data} />;
+            </Link>
+          );
         })}
       </div>
     </>
   );
 };
 
-const RestaurantCards = ({ image, title, rating, deliveryFee }) => {
+export const RestaurantCards = ({ image, title, rating, deliveryFee }) => {
   return (
     <div className="RestaurantCards">
       <img className="RestImg" src={image}></img>
@@ -50,3 +72,29 @@ const RestaurantCards = ({ image, title, rating, deliveryFee }) => {
 };
 
 export default Body;
+
+const NotFound = () => {
+  const [searchText, setsearchText] = useState("");
+  const [clickedRestaurant, setclickedRestaurant] = useState(RestaurantList);
+  const [LoadingPage, setLoadingPage] = useState(RestaurantList);
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={searchText}
+        onChange={(e) => {
+          setsearchText(e.target.value);
+        }}
+      ></input>
+      <button
+        onClick={() => {
+          setclickedRestaurant(filterData(LoadingPage, searchText));
+        }}
+      >
+        Search
+      </button>
+      <h1>Not found</h1>
+    </div>
+  );
+};

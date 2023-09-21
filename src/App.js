@@ -1,29 +1,48 @@
-import React, { StrictMode } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import Prac from "./components/Prac";
- 
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import About from "./components/About";
+import ErrorMsg from "./components/ErrorMsg";
+import Contact from "./components/Contact";
+import RestMenu from "./components/RestMenu";
+
 function App() {
   return (
     <>
-      <StrictMode>
-        <Navbar />
-        <Body />
-        {/* <Prac /> */}
-        <Footer />
-      </StrictMode>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </>
   );
 }
+const appRoute = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorMsg />,
+    children: [
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/restaurant/:id",
+        element : <RestMenu />
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
-
-function Arr(nums) {
-  return nums.map((s) => {
-    return s % 2 === 0 ? s * 2 : s * 3;
-  });
-}
-console.log(Arr([1, 2, 3, 4, 5]));
+root.render(<RouterProvider router={appRoute} />);
