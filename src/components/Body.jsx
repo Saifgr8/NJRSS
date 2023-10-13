@@ -16,6 +16,9 @@ const Body = () => {
 
   useEffect(() => {
     getRestData();
+    return () => {
+      console.log("Dismount");
+    };
   }, [searchText]);
 
   async function getRestData() {
