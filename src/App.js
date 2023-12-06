@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import Body from "./components/Body";
@@ -8,6 +8,12 @@ import About from "./components/About";
 import ErrorMsg from "./components/ErrorMsg";
 import Contact from "./components/Contact";
 import RestMenu from "./components/RestMenu";
+import Shimmer from "./components/shimmer";
+// import Villamart from "./components/Villamart"; //called as default import
+
+const VillamartDynamic = lazy(() => import("./components/Villamart"));
+//This is called as lazy loading/ dynamic import/ chuncking, this will create a seperate
+//.js file for villamart component give the component is very huge
 
 function App() {
   return (
@@ -38,7 +44,15 @@ const appRoute = createBrowserRouter([
       },
       {
         path: "/restaurant/:id",
-        element : <RestMenu />
+        element: <RestMenu />,
+      },
+      {
+        path: "/villamart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <VillamartDynamic />
+          </Suspense>
+        ),
       },
     ],
   },

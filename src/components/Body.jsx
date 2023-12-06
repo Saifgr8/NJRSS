@@ -2,12 +2,8 @@ import { RestaurantList } from "../config";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
-
-const filterData = (clickedRestaurant, searchText) => {
-  return clickedRestaurant.filter((restaurant) =>
-    restaurant?.title?.toLowerCase().includes(searchText?.toLowerCase())
-  );
-};
+import { filterData } from "../utils/Resuable";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   const [searchText, setsearchText] = useState("");
@@ -28,6 +24,12 @@ const Body = () => {
   }
 
   if (!LoadingPage) return null;
+
+  
+  const checkOnline = useOnline();
+  if (!checkOnline) {
+    return <h1>🔴 Check your internet connection.</h1>;
+  }
 
   return LoadingPage.length === 0 ? (
     <Shimmer />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../images/saifnew-modified.png";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Title = () => {
   return (
@@ -18,6 +19,7 @@ const Title = () => {
 
 const Navbar = () => {
   const [LoggedIn, setLoggedIn] = useState(false);
+  const checkOnline = useOnline();
 
   return (
     <div className="Navbar">
@@ -35,8 +37,12 @@ const Navbar = () => {
         <li>
           <Link to="/">Cart</Link>
         </li>
+        <li>
+          <Link to="/villamart">VillaMart</Link>
+        </li>
       </ul>
       <div>
+        <div>{checkOnline? (<h5>Online 🟢</h5>) : (<h5>Offline 🔴</h5>)}</div>
         {LoggedIn ? (
           <button onClick={() => setLoggedIn(false)}>Login</button>
         ) : (
