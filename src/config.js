@@ -141,3 +141,19 @@ export const BdayData = [
     Birthday: "18th Oct 1995",
   },
 ];
+
+export const Collapsedata = [
+  {
+    title:
+      "Dolor laborum esse est incididunt id reprehenderit dolore tempor.",
+    desc: "Esse cupidatat ut sunt esse culpa et Lorem. Elit deserunt laborum irure et qui fugiat ex incididunt consectetur enim officia incididunt ullamco. Ullamco dolore esse ex deserunt ut quis sit irure aute pariatur consectetur. Eu exercitation eu consequat enim commodo. Laborum non aute ex proident mollit et magna nisi consequat irure in pariatur. Eu in ea nisi pariatur deserunt amet aliqua nostrud tempor aliqua est.",
+  },
+  {
+    title: "Fugiat commodo duis irure velit ullamco ad duis incididunt velit ex amet occaecat non duis.",
+    desc: 'Officia in occaecat nulla est cillum tempor adipisicing consectetur ullamco et. Pariatur sint dolor sunt fugiat excepteur ut exercitation officia proident id occaecat occaecat. Duis officia nisi anim cupidatat et incididunt irure cillum sint fugiat laborum laboris.'
+  },
+  {
+    title: 'Et veniam aliquip adipisicing est nisi.',
+    desc: 'Voluptate excepteur magna Lorem sint ipsum non veniam enim labore sit. Lorem velit aliquip in do laborum magna ex velit. Commodo est incididunt et adipisicing occaecat ea veniam sunt consectetur et cillum ex. Ea in ea et aute consectetur laborum eu. Cillum reprehenderit aliquip excepteur esse sit quis elit est. Elit ea velit occaecat eu enim ipsum veniam veniam consequat.'
+  }
+];

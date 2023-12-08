@@ -17,7 +17,6 @@ const style = {
 };
 
 export default function ModalAbout({openModal,setOpenModal}) {
-
   return (
     <div>
       <Modal

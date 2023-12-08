@@ -9,6 +9,7 @@ const Body = () => {
   const [searchText, setsearchText] = useState("");
   const [clickedRestaurant, setclickedRestaurant] = useState([]);
   const [LoadingPage, setLoadingPage] = useState([]);
+  
 
   useEffect(() => {
     getRestData();
@@ -35,16 +36,16 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div>
-        <input
+      <div className="bg-yellow-100 h-auto">
+        <input className="p-2 m-2 border-spacing-3 bg-green-100"
           type="text"
-          prefix=""
+          placeholder="Type..."
           value={searchText}
           onChange={(e) => {
             setsearchText(e.target.value);
           }}
         ></input>
-        <button
+        <button className="p-2 m-2 bg-green-200 rounded-lg hover:bg-green-500"
           onClick={() => {
             setclickedRestaurant(filterData(LoadingPage, searchText));
           }}
@@ -52,11 +53,11 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="BodySite">
+      <div className="flex justify-between flex-wrap bg-yellow-100">
         {clickedRestaurant.map((data, index) => {
           return (
             <Link key={index} to={"restaurant/" + data.id}>
-              <RestaurantCards {...data} />;
+              <RestaurantCards {...data}/>
             </Link>
           );
         })}
@@ -65,10 +66,10 @@ const Body = () => {
   );
 };
 
-export const RestaurantCards = ({ image, title, rating, deliveryFee }) => {
+export const RestaurantCards = ({ image, title, rating, deliveryFee}) => {
   return (
-    <div className="RestaurantCards">
-      <img className="RestImg" src={image}></img>
+    <div className="bg-yellow-200 my-2">
+      <img className="w-52 h-52" src={image}></img>
       <h3>{title}</h3>
       <h4>{rating}</h4>
       <h4>{deliveryFee}</h4>

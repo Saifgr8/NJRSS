@@ -8,7 +8,7 @@ const Title = () => {
     <div>
       <a href="http://localhost:1234/">
         <img
-          className="Logo"
+          className="h-28 p-2"
           alt="no img"
           src="https://azure.wgp-cdn.co.uk/app-food-heaven/categories/FoodHeavenLogo-Large.png?qc-size=233,168"
         ></img>
@@ -20,33 +20,38 @@ const Title = () => {
 const Navbar = () => {
   const [LoggedIn, setLoggedIn] = useState(false);
   const checkOnline = useOnline();
+  
 
   return (
-    <div className="Navbar">
+    <div className="flex justify-between bg-yellow-200 shadow-lg ">
       <Title />
-      <ul>
-        <li>
+      <ul className="flex py-9">
+        <li className="px-2">
           <Link to="/">Home</Link>
         </li>{" "}
-        <li>
+        <li className="px-2">
           <Link to="/about">About us</Link>
         </li>
-        <li>
+        <li className="px-2">
           <Link to="/contact">Contact</Link>
         </li>{" "}
-        <li>
+        <li className="px-2">
           <Link to="/">Cart</Link>
         </li>
-        <li>
+        <li className="px-2">
           <Link to="/villamart">VillaMart</Link>
         </li>
       </ul>
       <div>
-        <div>{checkOnline? (<h5>Online 🟢</h5>) : (<h5>Offline 🔴</h5>)}</div>
+        <div>{checkOnline ? <h5>Online 🟢</h5> : <h5>Offline 🔴</h5>}</div>
         {LoggedIn ? (
-          <button onClick={() => setLoggedIn(false)}>Login</button>
+          <button className="py-8" onClick={() => setLoggedIn(false)}>
+            Login
+          </button>
         ) : (
-          <button onClick={() => setLoggedIn(true)}>Logout</button>
+          <button className="py-8" onClick={() => setLoggedIn(true)}>
+            Logout
+          </button>
         )}
       </div>
     </div>
